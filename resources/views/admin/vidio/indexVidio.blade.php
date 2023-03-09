@@ -29,7 +29,13 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Vidio</h5>
+            <div class="d-flex justify-content-between">
+                <h5 class="card-title">Vidio</h5>
+                <h5 class="card-title">
+                    <a href="{{ route('cetak_pdf') }}" class="btn btn-outline-primary text-decoration-none">Download pdf</a>
+                </h5>
+            </div>
+
 
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered" id="borderedTab" role="tablist">

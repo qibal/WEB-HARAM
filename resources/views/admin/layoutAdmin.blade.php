@@ -41,7 +41,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="" alt="">
+                {{-- <img src="" alt=""> --}}
                 <span class="d-none d-lg-block">Admin Indohub</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -188,8 +188,8 @@
                                     <button class="btn  d-flex">
                                         <div class="text-secondary">{{ Auth::user()->name }}</div>
                                         <div>
-                                            <img src="{{ asset('fontawesome-free-6.2.0-web/svgs/solid/caret-down.svg') }}"
-                                                alt="" width="10" class="ms-2 mb-1">
+                                            {{-- <img src="{{ asset('fontawesome-free-6.2.0-web/svgs/solid/caret-down.svg') }}"
+                                                alt="" width="10" class="ms-2 mb-1"> --}}
                                         </div>
                                     </button>
                                     <div class="drop-content">

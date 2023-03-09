@@ -9,9 +9,11 @@ use App\Http\Controllers\user\userController;
 use App\Http\Controllers\admin\adminController;
 // auth
 use App\Http\Controllers\authController;
+// pdf
+use App\Http\Controllers\pdfController;
 
-
-Route::get('/', [userController::class, 'kategoriVidio'])->name('/');
+Route::get('/cetak_pdf', [adminController::class, 'cetak_pdf'])->name('cetak_pdf');
+Route::get('/', [userController::class, 'kategoriVidio'])->name('/')->middleware('RedirectIfAuthenticated');
 
 
 // auth
@@ -22,6 +24,9 @@ Route::get('/login', [authController::class, 'login'])->name('login');
 Route::post('/login/proses', [authController::class, 'prosesLogin'])->name('prosesLogin');
 
 Route::post('/logout', [authController::class, 'logout'])->name('logout');
+
+
+
 
 
 // user
@@ -56,4 +61,6 @@ Route::middleware(['auth:admin', 'PreventBackHistory'])->group(function () {
     Route::get('/IndoHub/admin/vidio/Edit/{id}', [adminController::class, 'vidioAdminEdit'])->name('vidioAdminEdit');
     Route::post('/IndoHub/admin/vidio/Update', [adminController::class, 'vidioAdminUpdate'])->name('vidioAdminUpdate');
     Route::get('/IndoHub/admin/vidio/delete/{id}', [adminController::class, 'vidioAdminDelete'])->name('vidioAdminDelete');
+    // cetak pdf
+
 });

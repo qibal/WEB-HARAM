@@ -7,7 +7,9 @@ use App\Models\kategori;
 use App\Models\vidio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+// use PDF;
 
+use Dompdf\Dompdf;
 
 class adminController extends Controller
 {
@@ -19,8 +21,6 @@ class adminController extends Controller
 
         return view('admin.dashboardAdmin', compact('count_vidio', 'count_kategori', 'fadeout'));
     }
-
-
     // function kategori
     function kategoriAdmin()
     {
@@ -105,6 +105,25 @@ class adminController extends Controller
         // $vidio = vidio::inRandomOrder()->get();
         return view('admin.vidio.indexVidio', compact('vidio', 'fadeout'));
     }
+    // pdf
+    public function cetak_pdf()
+    {
+        $vidio = vidio::orderBy('judul_vidio', 'asc')->get();
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml(view('admin.pdf', compact('vidio')));
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream();
+    }
+    // end pdf
+
+
     function vidioAdminTambah()
     {
         $kategori = kategori::orderBy('nama_kategori', 'asc')->get();
